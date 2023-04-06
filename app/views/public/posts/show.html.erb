@@ -10,12 +10,30 @@ Posts#show
      <%= image_tag @post.get_post_image, size:'100x100' %>
     <% end %>
   </p>
+<div id="like_post_<%= @post.id %>">
+     <%= render "public/likes/btn", post: @post %>
+</div>
+
+コメント数: <%= @post.comments.count %>
+
 <h2>タイトル</h2>
   <p><%= @post.title %></p>
 <h2>タグ</h2>
   <p><%= @post.tag %></p>
 <h2>キャプション</h2>
   <p><%= @post.body %></p>
+  
+
+　<!--コメント一覧部分-->
+　　<div id="comments-index">
+      <%= render "public/comments/index", post: @post %>
+    </div>
+    <!--コメントフォーム-->
+    <td>
+      <%= render "public/comments/form", post: @post, comment: @comment %>
+    </td>    
+    </div>
+  </div>
         
 <% if @post.user == current_user %>   
  <%= link_to "編集", edit_post_path(@post.id) %>

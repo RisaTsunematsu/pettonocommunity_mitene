@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @newpost = Post.new
     @post = Post.find(params[:id])
     @user = @post.user
-    #@comment = PostComment.new
+    @comment = Comment.new
     
   end
 
@@ -21,8 +21,8 @@ class Public::PostsController < ApplicationController
 def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-  if 
-      @post.save
+  
+  if     @post.save
        redirect_to post_path(@post.id), notice: "You have created book successfully."
   else
       @posts = Post.all

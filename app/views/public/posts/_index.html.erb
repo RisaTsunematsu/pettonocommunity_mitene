@@ -1,9 +1,17 @@
 <%#部分テンプレート#%>
 <% posts.each do |post| %>
-  <tr>
+  
    <td>
      <%= link_to post_path(post.id) do %>
       <%= image_tag post.get_post_image, size:'200x200' %>
      <% end %>
    </td>
+   <td>
+    <div id="like_post_<%= @post.id %>">
+     <%= render "public/likes/btn", post: @post %>
+    </div>
+   </td>
+  
   <% end %>
+  
+  

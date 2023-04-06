@@ -4,3 +4,10 @@ Posts#index
 
 <h2>投稿一覧</h2>
  <%= render 'index', posts: @posts%>
+
+<div id="like_post_<%= @post.id %>">
+  <%= render "public/likes/btn", post: @post %>
+</div>
+
+<%#コメント数: <%= @post.comments.count %>
+ 
