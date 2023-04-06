@@ -2,6 +2,8 @@ class Public::UsersController < ApplicationController
   def show
    @handlename = current_user.handlename
    @user = User.find(params[:id])
+   @posts = @user.posts
+   @post = Post.new
   end
   
   def edit

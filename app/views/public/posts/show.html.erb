@@ -1,10 +1,15 @@
 Posts#show
-<h2>投稿詳細</h2>
-<%= image_tag @user.get_profile_image, size:'100x100' %>
-<%= @handlename %>
+<h2><%= @handlename %>さんの投稿</h2>
+<%= link_to user_path(@user.id) do %>
+ <%= image_tag @user.get_profile_image, size:'100x100' %>
+<% end %>
 
 <h2>投稿画像</h2>	
-  <p><%= image_tag @post.get_post_image, size:'100x100' %></p>
+  <p>
+    <%=link_to posts_path do %>
+     <%= image_tag @post.get_post_image, size:'100x100' %>
+    <% end %>
+  </p>
 <h2>タイトル</h2>
   <p><%= @post.title %></p>
 <h2>タグ</h2>
@@ -12,5 +17,10 @@ Posts#show
 <h2>キャプション</h2>
   <p><%= @post.body %></p>
         
-    
-    
+<% if @post.user == current_user %>   
+ <%= link_to "編集", edit_post_path(@post.id) %>
+<% end %>
+<%#= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>   
+<% if @post.user == current_user %>
+<%= link_to '削除',post_path(@post.id) , method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+<% end %>

@@ -18,34 +18,38 @@ class Public::PostsController < ApplicationController
    
   end
 
-  def create
+def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    
-
-    if @post.save
-      redirect_to post_path(@post.id), notice: "You have created book successfully."
-    else
+  if 
+      @post.save
+       redirect_to post_path(@post.id), notice: "You have created book successfully."
+  else
       @posts = Post.all
       @user = current_user
-      render :index
-    end
+       render :index
+  end
+end
+
+  def edit
+   @post = Post.find(params[:id])
   end
 
-  #def edit
+  def update
+    @post = Post.find(params[:id])
+    if@post.update(post_params)
+      redirect_to post_path(@post.id), notice: "You have updated book successfully."
+    else
+      @posts = Post.all
+      render :edit
+    end
+  end
   
-    #@book = Book.find(params[:id])
-  #end
-
-  #def update
-    #@book = Book.find(params[:id])
-    #if @book.update(book_params)
-      #redirect_to book_path(@book.id), notice: "You have updated book successfully."
-    #else
-      #@books = Book.all
-      #render :edit
-    #end
-  #end
+  def destroy
+    @post = Post.find(params[:id])  # データ（レコード）を1件取得
+    @post.destroy # データ（レコード）を削除
+    redirect_to posts_path  # 投稿一覧画面へリダイレクト  
+  end
 
   #def destroy
     #@book = Book.find(params[:id])

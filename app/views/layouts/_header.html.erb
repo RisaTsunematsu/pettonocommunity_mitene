@@ -20,8 +20,13 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
+            <%=  link_to new_post_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> 投稿
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> すべての投稿
             <% end %>
           </li>
           <li>
