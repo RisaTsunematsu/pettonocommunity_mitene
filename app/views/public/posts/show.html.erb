@@ -18,6 +18,10 @@ Posts#show
 
 <h2>タイトル</h2>
   <p><%= @post.title %></p>
+<h2>カテゴリー</h2>
+<% @post.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+<% end %>
 <h2>タグ</h2>
   <p><%= @post.tag %></p>
 <h2>キャプション</h2>

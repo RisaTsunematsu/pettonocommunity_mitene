@@ -1,0 +1,11 @@
+<h2>検索結果 "<%= @keyword %>"</h2>
+ 
+    <% @posts.each do |post| %>
+      
+        
+      <%=link_to post_path(post.id) do %>
+       <%= image_tag post.get_post_image, size:'100x100' %>
+      <% end %>
+      
+    <% end %>
+  

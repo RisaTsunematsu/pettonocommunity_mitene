@@ -22,6 +22,16 @@ Posts#new
       </div>
     </div>
     <div class="row mt-3">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+           <%= tag.check_box class: 'form-check-input' %>
+           <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row mt-3">
      <p class="col-md-2">キャプション</p>
       <div class="form-group">
         <%= f.text_area :body, class: "form-control introduction" %>

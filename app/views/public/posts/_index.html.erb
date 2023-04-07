@@ -6,6 +6,10 @@
       <%= image_tag post.get_post_image, size:'200x200' %>
      <% end %>
    </td>
+  
+    <h2>タイトル</h2>
+     <p><%= @post.title%></p>
+  
    <td>
     <div id="like_post_<%= @post.id %>">
      <%= render "public/likes/btn", post: @post %>

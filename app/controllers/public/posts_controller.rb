@@ -15,7 +15,16 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
     @user = current_user
     @post = Post.new
+    
+    if params[:tag_ids]
+      @posts = []
+      params[:tag_ids].each do |key, value|      
+        @posts += Tag.find_by(name: key).posts if value == "1"
+      end
+      @posts.uniq!
+    end
    
+    
   end
 
 def create
@@ -45,22 +54,27 @@ end
     end
   end
   
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('tag LIKE ?',"%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
+  end
+  
   def destroy
     @post = Post.find(params[:id])  # データ（レコード）を1件取得
     @post.destroy # データ（レコード）を削除
     redirect_to posts_path  # 投稿一覧画面へリダイレクト  
   end
 
-  #def destroy
-    #@book = Book.find(params[:id])
-    #@book.delete
-    #redirect_to books_path
-  #end
+  
 
   private
 
   def post_params
-    params.require(:post).permit(:title,:tag,:body,:post_image)
+    params.require(:post).permit(:title,:tag,:body,:post_image,tag_ids: [])
   end
   
 end

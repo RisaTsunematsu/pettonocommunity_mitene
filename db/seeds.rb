@@ -9,3 +9,11 @@ Admin.create!(
     email: 'moca04@gmail.com',
     password: '000000',
 )
+
+Tag.create([
+  { name: '犬' },
+  { name: 'ねこ' },
+  { name: 'ペット' },
+  { name: 'おでかけ' },
+  { name: 'ペット自慢' }
+])
