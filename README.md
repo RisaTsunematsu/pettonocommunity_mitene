@@ -1,24 +1,46 @@
-# README
+# pettonocommunity_mitene
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## サイト概要
+### サイトテーマ
+愛するペットのことをもっと知りたい、知ってもらいたい、
+初めてペットを飼うからわからないことだらけという方の情報共有の場。
 
-* Ruby version
+ペットを飼っている人の情報共有ができるコミュニティサイト
 
-* System dependencies
 
-* Configuration
+### テーマを選んだ理由
+　SNSや町の掲示板でペットが迷子になったというのを度々見かけ、心を痛めてました。私に何かできることはないかと
+思い、ペットのコミュニティサイトを作ろうと思いました。SNS上で繋がっていれば迷子になった際に情報提供や共有ができたり、
+お互いに助け合いができれば良いと思ったからです。しかし昨今、迷子になったペットを探す名目で個人情報を聞き出したり、謝礼金を
+要求するという詐欺が横行しています。このようなことが起こらないためにも個人情報の悪用や金銭を要求するような書き込みがあれば
+管理者側が削除したり、コメントをする際に注意喚起文を出すようにしました。
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+### ターゲットユーザ
+- ペットを飼っている人
+- これからペットを飼おうとしている人
+- 初めてペットを飼う人
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
+- ペットが迷子になった時
+- 災害が起きた時
+- 同じペットを飼っている人を見つけたい時
+- 自分のペットのことを知ってもらいたい時
+- 初めてペットを飼う時
 
-* Deployment instructions
 
-* ...
+
+## 設計書
+<...>
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+- 使用検討中です
