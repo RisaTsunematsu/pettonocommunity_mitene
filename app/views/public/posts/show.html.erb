@@ -1,0 +1,16 @@
+Posts#show
+<h2>投稿詳細</h2>
+<%= image_tag @user.get_profile_image, size:'100x100' %>
+<%= @handlename %>
+
+<h2>投稿画像</h2>	
+  <p><%= image_tag @post.get_post_image, size:'100x100' %></p>
+<h2>タイトル</h2>
+  <p><%= @post.title %></p>
+<h2>タグ</h2>
+  <p><%= @post.tag %></p>
+<h2>キャプション</h2>
+  <p><%= @post.body %></p>
+        
+    
+    

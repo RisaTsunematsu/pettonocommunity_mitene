@@ -1,0 +1,58 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>みんなのペットコミュニティ Mitene</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          
+          <li>
+            <%= link_to root_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> ホーム
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to user_path(current_user.id),class: 'nav-link text-light' do %>
+              <i class="fas fa-users"></i> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> 投稿
+            <% end %>
+          </li>
+          <li>
+            <%#= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+             <%#<i class="fas fa-sign-out-alt"></i> ログアウト
+            <%# end %>
+          </li>
+        <% else %>
+         <li>
+          <%= link_to root_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> ホーム
+            <% end %>
+         </li>   
+          
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link">このサイトについて</i> 
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>

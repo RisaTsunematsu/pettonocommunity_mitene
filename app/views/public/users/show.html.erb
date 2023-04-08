@@ -1,0 +1,20 @@
+Users#show
+マイページ
+
+<h2><%= @handlename %>さんのマイページ</h2>
+
+
+<table class='table'>
+  <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
+  <tr><%= link_to '編集', edit_user_path %></tr>
+  <tr>
+	  <th>名前</th>
+	  <th><%= @handlename %></th>
+  </tr>
+  <tr>
+	  <th>自己紹介</th>
+	  <th><%= @user.introduction %></th>
+	</tr>
+</table>
+
+

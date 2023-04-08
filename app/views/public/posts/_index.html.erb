@@ -1,0 +1,8 @@
+<% posts.each do |post| %>
+  <tr>
+   <td>
+     <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_post_image, size:'200x200' %>
+     <% end %>
+   </td>
+  <% end %>

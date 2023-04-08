@@ -1,0 +1,35 @@
+Posts#_form
+
+<%= form_with model: @post,local:true do |f| %>
+
+
+    <div class="row mt-3">
+     <p class="col-md-2">投稿画像</p>
+      <div class="form-group">
+        <%= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/*' %>
+      </div>
+    </div>
+    <div class="row mt-3">
+     <p class="col-md-2">タイトル</p>
+      <div class="form-group">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="row mt-3">
+     <p class="col-md-2">タグ</p>
+      <div class="form-group">
+        <%= f.text_area :tag, class: "form-control introduction" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+     <p class="col-md-2">キャプション</p>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control introduction" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-success' %>
+    </div>
+    
+    
+<% end %>
