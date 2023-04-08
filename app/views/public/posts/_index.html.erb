@@ -8,12 +8,15 @@
    </td>
   
     <h2>タイトル</h2>
-     <p><%= @post.title%></p>
+     <p><%= post.title%></p>
   
-   <td>
-    <div id="like_post_<%= @post.id %>">
-     <%= render "public/likes/btn", post: @post %>
+   <%#td>
+    <div id="like_post_<%= post.id %>">
+     <%#= render "public/likes/btn", post: post %>
     </div>
+   </td>
+   <td>
+   💭 : <%= post.comments.count %>
    </td>
   
   <% end %>

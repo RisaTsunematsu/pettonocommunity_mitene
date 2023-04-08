@@ -1,9 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
-   @handlename = current_user.handlename
    @user = User.find(params[:id])
    @posts = @user.posts
-   @post = Post.new
   end
   
   def edit
@@ -22,10 +20,31 @@ class Public::UsersController < ApplicationController
     end
   end
   
+  def unsubscribe
+  end
+
+  def is_deleted
+   @user= current_user
+   if @user.update(is_deleted: true)
+    sign_out_and_redirect(current_user)
+   else
+    render "unsubscribe"
+   end
+  end
+
+  def withdrawal
+   @user= current_user
+   if @user.update(is_deleted: true)
+    sign_out_and_redirect(current_user)
+   else
+    render "unsubscribe"
+   end
+  end
+  
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:handlename, :introduction, :profile_image,:is_deleted)
   end
 
 end

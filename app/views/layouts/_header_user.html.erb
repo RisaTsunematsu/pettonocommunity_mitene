@@ -1,0 +1,43 @@
+ <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+        
+         <span class="client-name  login-client-name">
+          ようこそ、<%= current_user.first_name %>さん！
+         </span>
+          
+          <li>
+            <%= link_to root_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> ホーム
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to user_path(current_user.id),class: 'nav-link text-light' do %>
+              <i class="fas fa-users"></i> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to new_post_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> 投稿
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> すべての投稿
+            <% end %>
+          </li>
+          <li>
+            <%#= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+             <%#<i class="fas fa-sign-out-alt"></i> ログアウト
+            <%# end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_admin_session_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+       <% end %>
+        </ul>
+  </div>

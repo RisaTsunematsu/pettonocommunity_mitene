@@ -1,15 +1,24 @@
 Users#show
 マイページ
 
-<h2><%= @handlename %>さんのマイページ</h2>
+<h2><%= @user.handlename %>さんのマイページ</h2>
 
 
 <table class='table'>
   <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
-  <tr><%= link_to '編集', edit_user_path %></tr>
+  <tr>
+    <% if @user == current_user %> 
+    　<%= link_to '編集', edit_user_path %>
+    <% end %>
+    　
+  </tr>
+  <tr>
+    <% if @user == current_user  %> 　
+    　<%= link_to '退会', user_unsubscribe_path(current_user) %></tr>
+    <% end %>　
   <tr>
 	  <th>名前</th>
-	  <th><%= @handlename %></th>
+	  <th><%= @user.handlename %></th>
   </tr>
   <tr>
 	  <th>自己紹介</th>
@@ -17,6 +26,6 @@ Users#show
 	</tr>
 </table>
 
-<h2><%= @handlename %>さんの投稿</h2>
+<h2><%= @user.handlename%>さんの投稿</h2>
       <%= render 'public/posts/index', posts: @posts%>
 

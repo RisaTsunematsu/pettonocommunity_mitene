@@ -10,7 +10,12 @@ devise_for :users, controllers: {
    root to: 'homes#top'
    get '/about' => 'homes#about'
    #get '/search', to: 'searches#search'
-   resources :users
+   resources :users do
+     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+   end
+   
+   
    resources :posts do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -19,9 +24,9 @@ devise_for :users, controllers: {
     end
    end
  end
+
  
- 
-devise_for :admin, controllers: {
+devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 #管理者側

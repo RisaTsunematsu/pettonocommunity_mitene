@@ -1,5 +1,5 @@
 Posts#show
-<h2><%= @handlename %>さんの投稿</h2>
+<h2><%=@user.handlename %>さんの投稿</h2>
 <%= link_to user_path(@user.id) do %>
  <%= image_tag @user.get_profile_image, size:'100x100' %>
 <% end %>
@@ -14,7 +14,7 @@ Posts#show
      <%= render "public/likes/btn", post: @post %>
 </div>
 
-コメント数: <%= @post.comments.count %>
+💭: <%= @post.comments.count %>
 
 <h2>タイトル</h2>
   <p><%= @post.title %></p>
