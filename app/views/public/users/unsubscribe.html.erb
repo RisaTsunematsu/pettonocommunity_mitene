@@ -10,10 +10,10 @@
           <%= f.submit "退会する", class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
       <% end %>
       </div>
-  <%#= button_to "退会する", user_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
-  <%= link_to "退会しない", user_path(current_user) %>
-  <%= button_to "退会する", root_path, method: :get, id: 'withdrawal' %>
-  <%= link_to '退会', user_withdrawal_path, data: { turbo_method: :delete, turbo_confirm: 'OK?' } %>  
+  <%= link_to "退会する", user_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
+  <%#= link_to "退会しない", user_path(current_user) %>
+  <%#= button_to "退会する", root_path, method: :get, id: 'withdrawal' %>
+  <%#= link_to '退会', user_withdrawal_path, data: { turbo_method: :delete, turbo_confirm: 'OK?' } %>  
  <script>
   let btn = document.getElementById('user_withdrawal');
   btn.addEventListener('click', function() {
