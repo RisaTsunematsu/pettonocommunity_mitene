@@ -10,15 +10,15 @@
     <h2>タイトル</h2>
      <p><%= post.title%></p>
   
-   <%#td>
-    <div id="like_post_<%= post.id %>">
-     <%#= render "public/likes/btn", post: post %>
-    </div>
-   </td>
-   <td>
-   💭 : <%= post.comments.count %>
-   </td>
   
-  <% end %>
+    <tr id="like_post_<%= post.id %>">
+     <td class="like_btn"><%= render "public/likes/btn", post: post %></td>
+    </tr>
+   
+   <td>
+      💭<%= post.comments.count %>
+   </td><br/>
+  
+<% end %>
   
   

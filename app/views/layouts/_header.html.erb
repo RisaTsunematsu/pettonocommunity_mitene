@@ -33,10 +33,10 @@
             <% end %>
           </li>
           <li>
-            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
-            <%#= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-             <%#i class="fas fa-sign-out-alt"></i> ログアウト
-            <%# end %>
+            
+            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+             <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
           </li>
         <% else %>
          <li>
