@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PettonocommunityMitene</title>
+    <title>Pettonocommunity_Mitene</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,21 @@
   </head>
 
   <body>
+    
+  <% if admin_signed_in? %>
+   <% if request.fullpath.include? "/admin" %>
+     <%= render 'layouts/header_admin' %>
+  <% else %>
     <%= render 'layouts/header' %>
+  <% end %>
+ <% elsif user_signed_in? %>
+  <%= render 'layouts/header' %>
+ <% else %>
+  <%= render 'layouts/header' %>
+ <% end %>
+    
+      <%#= render 'layouts/header' %>
+
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

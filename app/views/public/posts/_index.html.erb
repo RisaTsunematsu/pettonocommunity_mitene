@@ -1,23 +1,23 @@
 <%#部分テンプレート#%>
 <% posts.each do |post| %>
   
-   <td>
+   <div>
      <%= link_to post_path(post.id) do %>
       <%= image_tag post.get_post_image, size:'200x200' %>
      <% end %>
-   </td>
+   </div>
   
     <h2>タイトル</h2>
      <p><%= post.title%></p>
   
   
-    <tr id="like_post_<%= post.id %>">
-     <td class="like_btn"><%= render "public/likes/btn", post: post %></td>
-    </tr>
+    <div id="like_post_<%= post.id %>">
+     <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+    </div>
    
-   <td>
+   <div>
       💭<%= post.comments.count %>
-   </td><br/>
+   </div><br/>
   
 <% end %>
   
