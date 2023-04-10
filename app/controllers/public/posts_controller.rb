@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i(new show create edit update destroy)
+  
   def new
     @post = Post.new
   end
@@ -22,22 +24,20 @@ class Public::PostsController < ApplicationController
       end
       @posts.uniq!
     end
-   
-    
   end
 
-def create
+  def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
   
-  if     @post.save
-       redirect_to post_path(@post.id), notice: "You have created book successfully."
-  else
+    if@post.save
+      redirect_to post_path(@post.id), notice: "You have created book successfully."
+    else
       @posts = Post.all
       @user = current_user
-       render :index
+      render :index
+    end
   end
-end
 
   def edit
    @post = Post.find(params[:id])
@@ -67,9 +67,7 @@ end
     @post.destroy # データ（レコード）を削除
     redirect_to posts_path  # 投稿一覧画面へリダイレクト  
   end
-
   
-
   private
 
   def post_params

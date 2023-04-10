@@ -1,24 +1,25 @@
 <%#部分テンプレート#%>
-<% posts.each do |post| %>
-  
-   <div>
-     <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_post_image, size:'200x200' %>
-     <% end %>
-   </div>
-  
-    <h2>タイトル</h2>
-     <p><%= post.title%></p>
-  
-  
-    <div id="like_post_<%= post.id %>">
-     <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+<div class="row">
+  <% posts.each do |post| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="post_images">
+        <%= link_to post_path(post.id) do %>
+         <%= image_tag post.get_post_image, class: "img-fluid" %>
+        <% end %>
+      </div>
+     
+       <h2>タイトル</h2>
+        <p><%= post.title%></p>
+     
+     
+       <div id="like_post_<%= post.id %>">
+        <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+       </div>
+      
+      <div>
+         💭<%= post.comments.count %>
+      </div><br/>
     </div>
-   
-   <div>
-      💭<%= post.comments.count %>
-   </div><br/>
-  
-<% end %>
-  
+  <% end %>
+</div>
   

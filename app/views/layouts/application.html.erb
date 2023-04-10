@@ -6,27 +6,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    
-  <% if admin_signed_in? %>
-   <% if request.fullpath.include? "/admin" %>
-     <%= render 'layouts/header_admin' %>
-  <% else %>
-    <%= render 'layouts/header' %>
-  <% end %>
- <% elsif user_signed_in? %>
-  <%= render 'layouts/header' %>
- <% else %>
-  <%= render 'layouts/header' %>
- <% end %>
-    
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>みんなのペットコミュニティ Mitene</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if params[:controller].include?('admin') %>
+                 <%= render 'layouts/header_admin' %>
+              <% else %>
+                <%= render 'layouts/header' %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
       <%#= render 'layouts/header' %>
-
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
+    <% if Rails.env.development? %>
+      admin:<%= current_admin.inspect %><br>
+      user:<%= current_user.inspect %><br>
+      <%= debug params %>
+    <% end %>
   </body>
 </html>

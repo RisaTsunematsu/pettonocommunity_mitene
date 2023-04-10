@@ -1,0 +1,3 @@
+$('#comments-index').html('<%=j(render "public/comments/index", post: @post) %>');
+$("#comment_comment").val("");
+$("#comment_count").html('<%= @post.comments.size %>');

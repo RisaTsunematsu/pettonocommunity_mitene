@@ -32,9 +32,9 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 #管理者側
  namespace :admin do
    root 'homes#top'
-   resources :users
-   resources :posts
-   resources :post_comments
+   resources :users, only: [:index, :destroy]
+   resources :posts, only: [:index, :destroy]
+   resources :post_comments, only: [:index, :destroy]
  end
   
 

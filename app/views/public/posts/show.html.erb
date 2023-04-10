@@ -14,7 +14,9 @@ Posts#show
      <%= render "public/likes/btn", post: @post %>
 </div>
 
-💭: <%= @post.comments.count %>
+<div>
+  💭: <span id="comment_count"><%= @post.comments.count %></span>
+</div>
 
 <h2>タイトル</h2>
   <p><%= @post.title %></p>
