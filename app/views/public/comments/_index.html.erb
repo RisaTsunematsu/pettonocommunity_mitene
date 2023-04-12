@@ -1,7 +1,6 @@
-コメント一覧
+<h2>コメント一覧</h2>
 
 <div>
-  
   <% post.comments.each do |post_comment| %>
     <p>
      <%= link_to user_path( post_comment.user.id) do %>

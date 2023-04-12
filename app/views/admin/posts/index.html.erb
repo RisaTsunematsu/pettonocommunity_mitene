@@ -1,2 +1,23 @@
 <h2>投稿一覧</h2>
-<%= render 'public/posts/index', posts: @posts %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">投稿画像</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">タグ</th>
+      <th scope="col">キャプション</th>
+      <th scope="col"></th></th>
+    </tr>
+  </thead>
+  <% @posts.each do |post| %>
+  <tbody>
+    <tr>
+      <td><%= image_tag post.get_post_image, style: "width: 70px; height: 70px;" %></td>
+      <td><%= post.title %></td>
+      <td><%= post.tag %></td>
+      <td><%= post.body %></td>
+      <td><%= link_to '削除', admin_post_path(post.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

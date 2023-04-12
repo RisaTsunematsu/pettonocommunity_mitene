@@ -8,10 +8,7 @@
         <% end %>
       </div>
      
-       <h2>タイトル</h2>
-        <p><%= post.title%></p>
-     
-     
+       <h2><%= post.title%></h2>
        <div id="like_post_<%= post.id %>">
         <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
        </div>

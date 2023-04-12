@@ -1,13 +1,23 @@
 # 会員Top
-ペットのコミュニティサイト
+ようこそ、みんなのペットコミュニティMiteneへ!
 
-<div class="col-10">
-   <%#div class="card" style="max-width: 600px;">
-    <%#img src="pf_top.jpg" alt="トップ画像"#%>
-     <div class="card-img-overlay col">
-       <p class="text-white text-white d-flex align-items-center justify-content-center" style="height:250px;">
-        ようこそ、みんなのペットコミュニティMiteneへ！</p>
-        
-     </div>
-    </div>
-   </div>
+ 
+ 
+  <% @posts.each do |post| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="post_images">
+        <%= link_to post_path(post.id) do %>
+         <%= image_tag post.get_post_image, class: "img-fluid" %>
+        <% end %>
+      </div>
+     
+       <div>
+        <h2><%= post.title%></h2>
+         ♡<%= post.likes.count %>
+         💭<%= post.comments.count %>
+        <br/>
+       </div>
+    <% end %>
+  </div>
+  
+  

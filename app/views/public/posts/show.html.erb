@@ -18,33 +18,35 @@ Posts#show
   💭: <span id="comment_count"><%= @post.comments.count %></span>
 </div>
 
-<h2>タイトル</h2>
+<h3>タイトル</h3>
   <p><%= @post.title %></p>
-<h2>カテゴリー</h2>
+<h3>カテゴリー</h3>
 <% @post.tags.each do |tag| %>
     <span><%= tag.name %></span>
 <% end %>
-<h2>タグ</h2>
+<h3>タグ</h3>
   <p><%= @post.tag %></p>
-<h2>キャプション</h2>
+<h3>キャプション</h3>
   <p><%= @post.body %></p>
   
-
-　<!--コメント一覧部分-->
-　　<div id="comments-index">
-      <%= render "public/comments/index", post: @post %>
-    </div>
-    <!--コメントフォーム-->
-    <td>
-      <%= render "public/comments/form", post: @post, comment: @comment %>
-    </td>    
-    </div>
-  </div>
-        
 <% if @post.user == current_user %>   
- <%= link_to "編集", edit_post_path(@post.id) %>
+ <%= link_to "...", edit_post_path(@post.id)  %>
 <% end %>
 <%#= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>   
 <% if @post.user == current_user %>
-<%= link_to '削除',post_path(@post.id) , method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+ <%= link_to '🗑',post_path(@post.id) , method: :delete, data: { confirm: '本当に消しますか？' }%>
 <% end %>
+  
+
+　
+    <!--コメントフォーム-->
+    <td>
+      <%= render "public/comments/form", post: @post, comment: @comment %>
+    </td>   
+    <!--コメント一覧部分-->
+　　<div id="comments-index">
+      <%= render "public/comments/index", post: @post %>
+    </div>
+    </div>
+  </div>
+        
