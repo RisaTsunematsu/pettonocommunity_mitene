@@ -1,29 +1,18 @@
 <% if user_signed_in? %>
   <li>
-    <%= link_to root_path,class: 'nav-link text-light' do %>
-      <i class="fas fa-home"></i> ホーム
-    <% end %>
+    <%= link_to "ホーム",root_path,class: 'nav-link text-light'%>
   </li>
   <li>
-    <%=  link_to user_path(current_user.id),class: 'nav-link text-light' do %>
-      <i class="fas fa-users"></i> マイページ
-    <% end %>
+    <%=  link_to "マイページ", user_path(current_user.id),class: 'nav-link text-light'%>
   </li>
   <li>
-    <%=  link_to new_post_path ,class: 'nav-link text-light' do %>
-      <i class="fas fa-book-open"></i> 投稿
-    <% end %>
+    <%=  link_to "投稿",new_post_path ,class: 'nav-link text-light'  %>
   </li>
   <li>
-    <%=  link_to posts_path ,class: 'nav-link text-light' do %>
-      <i class="fas fa-book-open"></i> すべての投稿
-    <% end %>
+    <%=  link_to "すべての投稿", posts_path ,class: 'nav-link text-light'  %>
   </li>
   <li>
-    
-    <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-     <i class="fas fa-sign-out-alt"></i> ログアウト
-    <% end %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-light'  %>
   </li>
 <% else %>
  <li>

@@ -1,7 +1,7 @@
 <div class='container'>
  
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2><%= @handlename %>さんのマイページ編集</h2>
     <%= form_with model: @user, local: true do |f| %>
       <%#= render 'layouts/errors', obj: @user %>
@@ -27,5 +27,13 @@
      <%= f.submit class: 'btn btn-secondary' %>
     </div>
     <% end %>
+    <div class="form-group">
+      <% if @user == current_user  %> 　
+    　 <%= link_to user_unsubscribe_path(current_user),class: "btn btn-danger" do %>
+       <i class="fas fa-user-times"></i>
+       <% end %>
+      <% end %>
+    </div>
+    
   </div>
 </div>

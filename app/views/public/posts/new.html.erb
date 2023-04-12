@@ -1,8 +1,13 @@
-Posts#new
+ </br>
+ <p><i class="fas fa-exclamation-triangle"></i>以下の内容はお控えください</p>
+   <ul>
+     <li>生体の販売＆譲渡に関する内容</li>
+     <li>誹謗中傷＆公序良俗の反する内容</li>
+     <li>金銭に特定する内容</li>
+   </ul></br>
 
+<h2>投稿</h2>
 <%= form_with model: @post,local:true do |f| %>
-
-
     <div class="row mt-3">
      <p class="col-md-2">投稿画像</p>
       <div class="form-group">
@@ -18,7 +23,7 @@ Posts#new
     <div class="row mt-3">
      <p class="col-md-2">タグ</p>
       <div class="form-group">
-        <%= f.text_area :tag, class: "form-control introduction" %>
+        <%= f.text_area :tag,:placeholder => "#半角", class: "form-control introduction" %>
       </div>
     </div>
     <div class="row mt-3">

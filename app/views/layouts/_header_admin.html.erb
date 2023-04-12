@@ -1,15 +1,18 @@
-<% if admin_signed_in? %>
+<div class="container mt-4">
+  <div class='btn-toolbar' role="toolbar">
+    <div class="row justify-content-end">
+  <% if admin_signed_in? %>
   <li class="nav-item">
     <%= link_to "ホーム", admin_root_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
   </li>
   <li class="nav-item">
-    <%= link_to "会員一覧", admin_users_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+    <%= link_to "会員", admin_users_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
   </li>
   <li class="nav-item">
-    <%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+    <%= link_to "投稿", admin_posts_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
   </li>
   <li class="nav-item">
-    <%= link_to "コメント一覧", admin_post_comments_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+    <%= link_to "コメント", admin_post_comments_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
   </li>
   <li class="nav-item">
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary ml-3' %>
@@ -22,3 +25,6 @@
     <%= link_to "ログイン", new_admin_session_path, class: 'btn btn-outline-secondary ml-3' %>
   </li>
 <% end %> 
+  </div>
+ </div>
+</div>

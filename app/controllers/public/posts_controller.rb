@@ -10,10 +10,11 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
+    @comments = Comment.page(params[:page])
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @user = current_user
     @post = Post.new
     

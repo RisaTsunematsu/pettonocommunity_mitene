@@ -1,23 +1,30 @@
-
 Posts#index
 <%= render 'layouts/errors', obj: @post %>
-
-<h2>タグ検索</h2>
-<%= form_with url: search_posts_path, local: true, method: :get do |form| %>
-    <%= form.text_field :keyword %>
-    <%= form.submit "検索" %>
-<% end %>
-
-<h2>カテゴリー検索</h2>
-<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-    <% Tag.all.each do |t| %>
-        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+<div class="container">
+ <div class="row">
+  <div class="col-6">
+   <h2>タグ検索</h2>
+　　<%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+     <%= form.text_field :keyword, :placeholder => "#半角" %>
+     <%= form.submit "検索" %>
     <% end %>
-    <%= submit_tag '検索' %>
-<% end %>
+  </div>
+  <div class="col-6">
+   <h2>カテゴリー検索</h2>
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+      <% Tag.all.each do |t| %>
+       <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+      <% end %>
+      <%= submit_tag '検索' %>
+    <% end %>  
+    </div>
+  </div>
+</div>
+</br>
+</br>
 
 
-<h2>投稿一覧</h2>
+
 <%= render 'index', posts: @posts%>
 
 

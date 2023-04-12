@@ -11,10 +11,11 @@
   <% @comments.each do |comment| %>
   <tbody>
     <tr>
-      <td><%#= comment.handlename %></td>
-      <td><%= comment.post_comments %></td>
-      <td><%#= link_to '削除', admin_post_path(post.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %></td>
+      <td><%= comment.user.handlename %></td>
+      <td><%= comment.comment %></td>  
+      <td><%= link_to '削除', admin_post_comment_path(comment.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
+<%= paginate @comments %>

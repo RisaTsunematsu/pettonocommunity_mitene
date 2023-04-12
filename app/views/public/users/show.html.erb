@@ -5,17 +5,16 @@ Users#show
 
 
 <table class='table'>
-  <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
+  <tr><%= image_tag @user.get_profile_image, size:'150x150' %></tr>
   <tr>
     <% if @user == current_user %> 
-    　<%= link_to '編集', edit_user_path %>
+    　<%= link_to edit_user_path,class: "btn btn-primary" do %>
+    　 <i class="fas fa-user-edit"></i>
+    　<% end %>
     <% end %>
-    　
   </tr>
-  <tr>
-    <% if @user == current_user  %> 　
-    　<%= link_to '退会', user_unsubscribe_path(current_user) %></tr>
-    <% end %>　
+
+  
   <tr>
 	  <th>名前</th>
 	  <th><%= @user.handlename %></th>

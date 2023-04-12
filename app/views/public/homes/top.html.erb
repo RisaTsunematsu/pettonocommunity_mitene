@@ -2,12 +2,12 @@
 ようこそ、みんなのペットコミュニティMiteneへ!
 
  
- 
+ <div class="row">
   <% @posts.each do |post| %>
     <div class="col-sm-6 col-md-4">
       <div class="post_images">
         <%= link_to post_path(post.id) do %>
-         <%= image_tag post.get_post_image, class: "img-fluid" %>
+         <%= image_tag post.get_post_image, size: "300x200" %>
         <% end %>
       </div>
      
@@ -17,7 +17,9 @@
          💭<%= post.comments.count %>
         <br/>
        </div>
+      </div>
     <% end %>
-  </div>
+ </div>
+  
   
   
