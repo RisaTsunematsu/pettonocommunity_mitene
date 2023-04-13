@@ -1,22 +1,19 @@
-<%#部分テンプレート#%>
 <div class="row">
-  <% posts.each do |post| %>
-    <div class="col-sm-6 col-md-4">
+<% @like_posts.each do |post| %>
+  <div class="col-sm-6 col-md-4">
       <div class="post_images">
         <%= link_to post_path(post.id) do %>
          <%= image_tag post.get_post_image, size:'250x250' %>
         <% end %>
       </div>
      
-      
+      <div>
        <h2><%= post.title%></h2>
-       
        <div id="like_post_<%= post.id %>">
         <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
        </div>
          💭<%= post.comments.count %>
-       <br/>
-   </div> 
- <% end %>
+      </div><br/>
+    </div>
+  <% end %>
 </div>
-  <%= paginate posts %>

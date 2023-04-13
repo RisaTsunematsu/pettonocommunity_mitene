@@ -13,6 +13,7 @@ devise_for :users, controllers: {
    resources :users do
      get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
      patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+     get '/like_posts' => 'posts#like_posts'
    end
    
    
@@ -23,6 +24,7 @@ devise_for :users, controllers: {
       get 'search'
     end
    end
+
  end
 
  

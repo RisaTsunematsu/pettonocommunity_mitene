@@ -25,14 +25,6 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
-  #def is_deleted
-  # @user= current_user
-  # if @user.update(is_deleted: true)
-  #  sign_out_and_redirect(current_user)
-  # else
-  #  render "unsubscribe"
-  # end
-  #end
 
   def withdrawal
    @user= current_user
@@ -46,10 +38,12 @@ class Public::UsersController < ApplicationController
    end
   end
   
+  
   private
 
   def user_params
     params.require(:user).permit(:handlename, :introduction, :profile_image,:is_deleted)
   end
+  
 
 end

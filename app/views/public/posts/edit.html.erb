@@ -1,5 +1,3 @@
-Posts#edit
-
 <%= render 'layouts/errors', obj: @post %>
 
 <%= form_with model: @post, url:post_path(@post.id), method: :patch do |f| %>
