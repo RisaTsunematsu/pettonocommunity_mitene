@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(9)
     @user = current_user
     @post = Post.new
     
@@ -24,6 +24,7 @@ class Public::PostsController < ApplicationController
         @posts += Tag.find_by(name: key).posts if value == "1"
       end
       @posts.uniq!
+      @posts = Post.where(id: @posts).page(params[:page])
     end
   end
 

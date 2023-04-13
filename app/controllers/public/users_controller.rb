@@ -25,18 +25,21 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
-  def is_deleted
-   @user= current_user
-   if @user.update(is_deleted: true)
-    sign_out_and_redirect(current_user)
-   else
-    render "unsubscribe"
-   end
-  end
+  #def is_deleted
+  # @user= current_user
+  # if @user.update(is_deleted: true)
+  #  sign_out_and_redirect(current_user)
+  # else
+  #  render "unsubscribe"
+  # end
+  #end
 
   def withdrawal
    @user= current_user
    if @user.update(is_deleted: true)
+    @user.comments.destroy_all()
+    @user.likes.destroy_all()
+    @user.posts.destroy_all()
     sign_out_and_redirect(current_user)
    else
     render "unsubscribe"
