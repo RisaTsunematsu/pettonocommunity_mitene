@@ -1,21 +1,23 @@
-<h2>コメント一覧</h2>
 
-<div>
-  <% post.comments.each do |post_comment| %>
-    <p>
+<div class="container">
+<h2>コメント一覧</h2>
+   <% post.comments.each do |post_comment| %>
+  <div class="row">
+    <div class="col-2">
      <%= link_to user_path( post_comment.user.id) do %>
-      <%= image_tag post_comment.user.get_profile_image, style: "width: 30px; height: 30px; border-radius: 50%" %></p>
+      <%= image_tag post_comment.user.get_profile_image, style: "width: 60px; height: 60px; border-radius: 50%" %></p>
      <% end %>
-    <%= post_comment.user.handlename %></br>
-    <%= post_comment.comment %></br>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-    
-    <% if post_comment.user == current_user %>
+    </div>
+    <div class="col-2"><%= post_comment.user.handlename %></div>
+    <div class="col"><%= post_comment.comment %></div>
+    <div class="col">
+     <% if post_comment.user == current_user %>
      <%= link_to post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger", remote: true, data: {confirm: "本当に削除しますか？"} do  %>
       <i class="fas fa-trash-alt"></i>
      <% end %>
     <% end %>
+    </div>
+    
+   </div>
   <% end %>
 </div>
-
- 

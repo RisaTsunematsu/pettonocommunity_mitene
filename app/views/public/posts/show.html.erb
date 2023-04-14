@@ -1,34 +1,45 @@
-Posts#show
+</br></br>
+<div class="container">
 <h2><%=@user.handlename %>さんが投稿しました</h2>
+</br>
 <%= link_to user_path(@user.id) do %>
  <%= image_tag @user.get_profile_image, size:'100x100' %>
 <% end %>
+</br></br></br>
 
-<h2>投稿画像</h2>	
+
+ <h2>投稿画像</h2>	
   <p>
     <%=link_to posts_path do %>
      <%= image_tag @post.get_post_image, size:'200x200' %>
     <% end %>
   </p>
-<div id="like_post_<%= @post.id %>">
+  <div class="row">
+   <div class="col-1">
+    <div id="like_post_<%= @post.id %>">
      <%= render "public/likes/btn", post: @post %>
-</div>
+    </div>
+   </div>
+   <div class="col-2">
+    💭: <span id="comment_count"><%= @post.comments.count %></span>
+   </div>
+  </div>
 
-<div>
-  💭: <span id="comment_count"><%= @post.comments.count %></span>
-</div>
+</br>
 
-<h3>タイトル</h3>
-  <p><%= @post.title %></p>
-<h3>カテゴリー</h3>
-<% @post.tags.each do |tag| %>
+<p>#タイトル</p>
+  <h3><%= @post.title %></h3>
+<p>#カテゴリー</p>
+<h3><% @post.tags.each do |tag| %>
     <span><%= tag.name %></span>
 <% end %>
-<h3>タグ</h3>
-  <p><%= @post.tag %></p>
-<h3>キャプション</h3>
-  <p><%= @post.body %></p>
+</h3>
+<p>#タグ</p>
+  <h3><%= @post.tag %></h3>
+<p>#キャプション</p>
+  <h3><%= @post.body %></h3>
  <%= @post.created_at.strftime('%Y/%m/%d') %>
+ 
   
 <% if @post.user == current_user %>   
  <%= link_to edit_post_path(@post.id),class: "btn btn-primary" do %>
@@ -41,7 +52,7 @@ Posts#show
    <i class="fas fa-trash-alt"></i>
  <% end %>
 <% end %>
-  
+</br></br>
 
 　
     <!--コメントフォーム-->
@@ -55,3 +66,4 @@ Posts#show
     </div>
   </div>
         
+</div>

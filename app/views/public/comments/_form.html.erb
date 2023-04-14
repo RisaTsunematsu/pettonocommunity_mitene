@@ -1,5 +1,5 @@
 <div class="form-group">
-   <label for="newcomment">コメント💭</label>
+   <h2>コメント</h2>
    <p><i class="fas fa-exclamation-triangle"></i>以下の内容はお控えください</p>
    <ul>
      <li>生体の販売＆譲渡に関する内容</li>
@@ -10,7 +10,7 @@
 
 
  <%= form_with(model:[post, comment],local: false) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに",class:"form-control" %>
+   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに",class:"form-control" %>
   <%= f.submit "送信する" %>
  <% end %>
 </div>
