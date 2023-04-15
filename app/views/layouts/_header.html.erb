@@ -28,7 +28,7 @@
   
   <li>
     <%= link_to about_path,class: 'nav-link text-light' do %>
-      <i class="fas fa-link">このサイトについて</i> 
+      <i class="fas fa-link">サイトについて</i> 
     <% end %>
   </li>
   <li>
@@ -40,6 +40,9 @@
     <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
       <i class="fas fa-sign-in-alt"></i> ログイン
     <% end %>
+  </li>
+  <li>
+    <%#= link_to 'ゲスト',  users_guest_sign_in_path, method: :post %> 
   </li>
 <% end %>
 

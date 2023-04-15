@@ -8,7 +8,7 @@
 </br></br></br>
 
 
- <h2>投稿画像</h2>	
+ <h2>投稿画像</h2>	</br>
   <p>
     <%=link_to posts_path do %>
      <%= image_tag @post.get_post_image, size:'200x200' %>
@@ -24,35 +24,56 @@
     💭: <span id="comment_count"><%= @post.comments.count %></span>
    </div>
   </div>
+ 
 
 </br>
 
-<p>#タイトル</p>
-  <h3><%= @post.title %></h3>
-<p>#カテゴリー</p>
-<h3><% @post.tags.each do |tag| %>
-    <span><%= tag.name %></span>
-<% end %>
-</h3>
-<p>#タグ</p>
-  <h3><%= @post.tag %></h3>
-<p>#キャプション</p>
-  <h3><%= @post.body %></h3>
- <%= @post.created_at.strftime('%Y/%m/%d') %>
- 
-  
-<% if @post.user == current_user %>   
- <%= link_to edit_post_path(@post.id),class: "btn btn-primary" do %>
-  <i class="fas fa-edit"></i>
- <% end %>
-<% end %>
-<%#= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>   
-<% if @post.user == current_user %>
- <%= link_to post_path(@post.id) , method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか？' } do%>
-   <i class="fas fa-trash-alt"></i>
- <% end %>
-<% end %>
-</br></br>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col"><%= @post.title %></th>
+    </tr>
+    <tr>
+      <th scope="col">カテゴリー</th>
+      <th scope="col">
+       <% @post.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+       <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">タグ</th>
+      <th scope="col"><%= @post.tag %></th>
+    </tr>
+    <tr>
+      <th scope="col">キャプション</th>
+      <th scope="col"><%= @post.body %></th>
+    </tr>
+    <tr>
+      <th scope="col"><%= @post.created_at.strftime('%Y/%m/%d') %></th>
+      <th scope="col">
+       <% if @post.user == current_user %>   
+        <%= link_to edit_post_path(@post.id),class: "btn btn-primary" do %>
+         <i class="fas fa-edit"></i>
+        <% end %>
+       <% end %>
+       
+       <% if @post.user == current_user %>
+        <%= link_to post_path(@post.id) , method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか？' } do%>
+         <i class="fas fa-trash-alt"></i>
+        <% end %>
+       <% end %>
+      </th>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
 
 　
     <!--コメントフォーム-->

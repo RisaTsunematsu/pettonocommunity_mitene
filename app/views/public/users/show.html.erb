@@ -1,28 +1,27 @@
 </br></br>
 <div class="row">
 <div class="col-sm-6 col-md-8">
-<h2><%= @user.handlename %>さんのマイページ
-    <% if @user == current_user %> 
-    　<%= link_to edit_user_path do %>
-    　<i class="fas fa-cog"></i>
-    　<% end %>
-    <% end %>
-</h2>  
+<h2><%= @user.handlename %>さんのマイページ</h2>  
 
 <table class='table'>
   <tr><%= image_tag @user.get_profile_image, size:'150x150' %>
   </tr>
   </br>
-  <tr>
-  <h3>
-    &emsp;&emsp;&emsp;&emsp;&nbsp;
-   <%= link_to user_like_posts_path(@user) do %>
-     <i class="fas fa-bookmark"></i>
-    <% end %>
-   </h3>
-  </tr>
 
 <thead>
+  <tr>
+    <th>
+     <% if @user == current_user %> 
+    　<%= link_to  edit_user_path do %>
+    　<i class="fas fa-user-edit"></i>
+    　<% end %>
+     <% end %>
+     
+     <%= link_to user_like_posts_path(@user) do %>
+      <i class="fas fa-bookmark"></i>
+     <% end %>
+    </th>
+  </tr>
   <tr>
 	  <th>名前</th>
 	  <th><%= @user.handlename %></th>

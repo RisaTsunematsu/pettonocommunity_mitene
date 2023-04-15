@@ -5,6 +5,8 @@ devise_for :users, controllers: {
   sessions: 'public/sessions'
 }
 
+
+
 #会員側
  scope module: :public do
    root to: 'homes#top'
