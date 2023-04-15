@@ -35,7 +35,7 @@ class Public::PostsController < ApplicationController
     if@post.save
       redirect_to post_path(@post.id), notice: "You have created book successfully."
     else
-      @posts = Post.all
+      @posts = Post.page(params[:page]).per(9)
       @user = current_user
       render :index
     end
