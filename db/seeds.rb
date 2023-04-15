@@ -13,7 +13,7 @@ Admin.create!(
 Tag.create([
   { name: '犬' },
   { name: 'ねこ' },
-  { name: 'ペット' },
-  { name: 'おでかけ' },
-  { name: 'ペット自慢' }
+  { name: 'うさぎ' },
+  { name: 'ハムスター' },
+  { name: 'その他のペット' }
 ])

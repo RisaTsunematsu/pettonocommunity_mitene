@@ -12,7 +12,12 @@
     <%=  link_to "すべての投稿", posts_path ,class: 'nav-link text-light'  %>
   </li>
   <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-light'  %>
+    <%=  link_to "ユーザー", users_path ,class: 'nav-link text-light'  %>
+  </li>
+  <li>
+    <%= link_to  destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+     <i class="fas fa-sign-out-alt"></i>
+    <% end %>
   </li>
 <% else %>
  <li>

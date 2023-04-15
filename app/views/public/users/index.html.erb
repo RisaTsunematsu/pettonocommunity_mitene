@@ -1,2 +1,31 @@
-Users#index
+</br></br>
 
+<h2>会員一覧</h2>
+</br>
+<table class="table">
+  <thead>
+    <tr>
+  
+      <th scope="col">プロフィール画像</th>
+      <th scope="col">ハンドルネーム</th>
+      <th scope="col">自己紹介</th>
+     <%#th scope="col"> ステータス</th#%>
+     
+      
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <td><%= link_to user_path(user.id) do %>
+      <%= image_tag user.get_profile_image, style: "width: 60px; height: 60px; border-radius: 50%" %></p>
+     <% end %></td>
+      <td><%= user.handlename %></td>
+      <td><%= user.introduction %></td>
+      <td><%#= user.is_deleted %></td>
+     
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<%= paginate @users %>

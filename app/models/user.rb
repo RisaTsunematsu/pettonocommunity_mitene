@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   validates :handlename, presence: true
-  validates :introduction,presence: true, length: { maximum: 50}
+  validates :introduction, length: { maximum: 50}
   
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
