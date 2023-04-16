@@ -20,16 +20,9 @@
     <% end %>
   </li>
 <% else %>
- <li>
-  <%= link_to root_path,class: 'nav-link text-light' do %>
-      <i class="fas fa-home"></i> ホーム
-    <% end %>
- </li>   
   
   <li>
-    <%= link_to about_path,class: 'nav-link text-light' do %>
-      <i class="fas fa-link">サイトについて</i> 
-    <% end %>
+    <%= link_to "サイトポリシー", about_path,class: 'nav-link text-light' %>
   </li>
   <li>
     <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
@@ -42,7 +35,9 @@
     <% end %>
   </li>
   <li>
-    <%#= link_to 'ゲスト',  users_guest_sign_in_path, method: :post %> 
+    <%= link_to users_guest_sign_in_path, method: :post,class: 'nav-link text-light' do %>
+     <i class="fas fa-user-alt"></i>ゲスト
+    <% end %>
   </li>
 <% end %>
 

@@ -22,7 +22,13 @@
       <td><%= user.handlename %></td>
       <td><%= user.email %></td>
       <td><%= user.is_deleted %></td>
-      <td><%= link_to '削除', admin_user_path(user.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %></td>
+      <td>
+       <% if user.email == 'guest@mail.com'%>
+        
+       <% else %> 
+        <%= link_to '削除', admin_user_path(user.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %>
+       <% end %>
+      </td>
     </tr>
   </tbody>
   <% end %>

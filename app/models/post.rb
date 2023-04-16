@@ -15,7 +15,9 @@ class Post < ApplicationRecord
   
    
   def liked_by?(user)
-    likes.exists?(user_id: user.id)
+    if user.present? #userという変数の中身があるか確認するメソッド　
+      likes.exists?(user_id: user.id)
+    end
   end
   
   def get_post_image

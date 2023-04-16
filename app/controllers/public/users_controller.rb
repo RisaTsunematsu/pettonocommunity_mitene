@@ -14,7 +14,14 @@ class Public::UsersController < ApplicationController
   def edit
    @handlename = current_user.handlename
    @user = User.find(params[:id])
+    #ゲストユーザーはマイページ編集をできなくした
+    #編集ボタンを押した場合、ログアウトしホームへ
+   if @user.email == 'guest@mail.com'
+      reset_session
+      redirect_to :root
+   end
   end
+ 
   
   def update
     @user = User.find(params[:id])

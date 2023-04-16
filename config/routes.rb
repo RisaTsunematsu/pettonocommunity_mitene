@@ -5,13 +5,17 @@ devise_for :users, controllers: {
   sessions: 'public/sessions'
 }
 
+ devise_scope :user do
+    post '/users/guest_sign_in', to: 'public/sessions#new_guest'
+  end
+
 
 
 #会員側
  scope module: :public do
    root to: 'homes#top'
    get '/about' => 'homes#about'
-   #get '/search', to: 'searches#search'
+   get '/search', to: 'searches#search'
    resources :users do
      get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
      patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
@@ -40,10 +44,5 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
    resources :posts, only: [:index, :destroy]
    resources :post_comments, only: [:index, :destroy]
  end
-  
-
-
-
-
 
 end

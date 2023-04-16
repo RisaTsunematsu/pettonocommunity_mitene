@@ -1,3 +1,4 @@
+<%# if current_user.present? %>
   <% if post.liked_by?(current_user) %>
     <p>
       <%= link_to post_likes_path(post), method: :delete, remote: true do %>
@@ -11,3 +12,14 @@
       <% end %>
     </p>
   <% end %>
+<%# else %>
+  <%#= link_to post_likes_path(post), method: :post, remote: true do %>
+   <%#= post.likes.count %> 
+  <%# end %>
+<%#end %>
+
+<%# コメントアウト部分はuser.rbの
+    if user.present? #userという変数の中身があるか確認するメソッド　
+      likes.exists?(user_id: user.id)
+    end　と同じ意味,モデルファイルに記述した方が記述量が少ないので
+    user.rbに書いた　#%>

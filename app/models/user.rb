@@ -22,5 +22,17 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
   
+  def self.guest
+    find_or_create_by!(email: 'guest@mail.com') do |user|
+      user.first_name = "山田"
+      user.last_name = "太郎"
+      user.first_name_kana = "ヤマダ"
+      user.last_name_kana = "タロウ"
+      user.handlename = "guest"
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+    end
+  end
+  
   
 end

@@ -33,9 +33,11 @@
       </div>
    <% end %>
     <div class="col-md">
-      <% if @user == current_user  %> 　
-    　 <%= link_to user_unsubscribe_path(current_user),class: "btn btn-danger" do %>
-       <i class="fas fa-user-times"></i>
+      <% if @user.email == 'guest@mail.com'%>
+      　<p>ゲストユーザーはユーザー情報の編集ができません。</p>
+      <% elsif @user == current_user %> 　
+    　  <%= link_to user_unsubscribe_path(current_user),class: "btn btn-danger" do %>
+        <i class="fas fa-user-times"></i>
        <% end %>
       <% end %>
     </div>
