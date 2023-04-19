@@ -1,21 +1,35 @@
 </br></br>
 <h2>検索結果 "<%= @keyword %>"</h2>
-  <div class="row">
-    <% @posts.each do |post| %>
-     <div class="col-sm-6 col-md-4">
-      <div class="post_images">
-       <%=link_to post_path(post.id) do %>
-        <%= image_tag post.get_post_image, size:'250x250' %>
-       <% end %>
-      </div>
-      <h2><%= post.title%></h2>
-       
-       <div id="like_post_<%= post.id %>">
-        <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
-       </div>
-         💭<%= post.comments.count %>
-       <br/>
-     </div> 
-    <% end %>
-  </div>
  
+ <div class="card-columns">
+   <% @posts.each do |post| %>
+  <div class="card">
+    
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_post_image,size:'250x250', class: "card-img-top";  %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <%= image_tag post.user.get_profile_image,style: "width: 60px; height: 60px; border-radius: 50%" %>
+            
+        </div>
+        <div class="col-8">
+          <p class="card-title">
+            <%= post.title%>
+          </p>
+    
+          <span><div id="like_post_<%= post.id %>">
+                 <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+                </div>
+          </span>
+          <span><%= link_to "#{post.comments.count} コメント", post_path(post.id), class: "text-dark" %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+  
