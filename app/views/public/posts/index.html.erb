@@ -20,9 +20,11 @@
     </script>
     <%= form_tag({controller:"posts",action:"index"}, method: :get,id:"example_id") do %>
       <% Tag.all.each do |t| %>
-
-       <li><%= check_box :tag_ids, t.name, checked: @tags[t.name] == "1" ? true :false %><%= t.name %></li>
-
+       <% if @tags %>
+         <li><%= check_box :tag_ids, t.name, checked: @tags[t.name] == "1" ? true :false %><%= t.name %></li>
+       <% else %>
+         <li><%= check_box :tag_ids, t.name, checked: false %><%= t.name %></li>
+        <%end%>
       <% end %>
       <%= submit_tag '検索' %>
     <% end %>  
