@@ -4,16 +4,23 @@
  <div class="row">
   <div class="col-6">
    <h2>タグ検索</h2>
-　　<%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+   
+　　<%= form_with url: search_posts_path, local: true, method: :get, id:"tag_id" do |form| %>
      <%= form.text_field :keyword, :placeholder => "#半角" %>
      <%= form.submit "検索" %>
     <% end %>
   </div>
   <div class="col-6">
    <h2>カテゴリー検索</h2>
-    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <script>
+      window.onpageshow = function(){
+        document.getElementById("example_id").reset();
+        document.getElementById("tag_id").reset();
+      };
+    </script>
+    <%= form_tag({controller:"posts",action:"index"}, method: :get,id:"example_id") do %>
       <% Tag.all.each do |t| %>
-       <% if params[:tag_ids][t.name].to_i == 1 %>
+       <% if params[:tag_ids] && params[:tag_ids][t.name].to_i == 1 %>
        <li><%= check_box :tag_ids, t.name,checked: true %><%= t.name %></li>
        <% else %>
        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
