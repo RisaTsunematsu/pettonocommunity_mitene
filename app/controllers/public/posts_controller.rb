@@ -17,6 +17,7 @@ class Public::PostsController < ApplicationController
     @posts = Post.page(params[:page]).per(9)
     @user = current_user
     @post = Post.new
+    @tags = params[:tag_ids]
     
     if params[:tag_ids]
       @posts = []
