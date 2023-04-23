@@ -21,7 +21,7 @@
     <%= form_tag({controller:"posts",action:"index"}, method: :get,id:"example_id") do %>
       <% Tag.all.each do |t| %>
        <% if @tags %>
-         <li><%= check_box :tag_ids, t.name, checked: @tags[t.name] == "1" ? true :false %><%= t.name %></li>
+         <li><%= check_box :tag_ids, t.name, checked: @tags[t.name] == "1" ? true : false %><%= t.name %></li>
        <% else %>
          <li><%= check_box :tag_ids, t.name, checked: false %><%= t.name %></li>
         <%end%>
