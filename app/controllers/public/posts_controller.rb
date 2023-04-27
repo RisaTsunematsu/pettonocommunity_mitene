@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(9)
+    @posts = Post.page(params[:page]).per(9).order(created_at: :desc) #order(created_at: :desc):投稿を新しい順に並べる
     @user = current_user
     @post = Post.new
     @tags = params[:tag_ids]
@@ -75,7 +75,7 @@ class Public::PostsController < ApplicationController
     user = User.find(params[:user_id])
     post_ids = user.likes.pluck(:post_id)
     # post_ids = Like.where(user_id: params[:user_id]).pluck(:post_id) #全部のいいねからuser_idカラムの値がparams[:user_id]のlikeをwhereで絞り込む
-    @like_posts = Post.where(id: post_ids).page(params[:page]).per(9)
+    @like_posts = Post.where(id: post_ids).page(params[:page]).per(9).order(created_at: :desc)
   end
   
   private
