@@ -3,7 +3,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">ハンドルネーム</th>
+  　   <th scope="col">コメント画像</th>
+  　   <th scope="col">ハンドルネーム</th>
       <th scope="col">コメント</th>
       <th scope="col"></th></th>
     </tr>
@@ -11,6 +12,7 @@
   <% @comments.each do |comment| %>
   <tbody>
     <tr>
+      <td><%= image_tag comment.post.get_post_image, style: "width: 70px; height: 70px;" %></td>
       <td><%= comment.user.handlename %></td>
       <td><%= comment.comment %></td>  
       <td><%= link_to '削除', admin_post_comment_path(comment.id), method: :delete, class: "btn btn-danger",data: {confirm: "本当に削除しますか？"}  %></td>
