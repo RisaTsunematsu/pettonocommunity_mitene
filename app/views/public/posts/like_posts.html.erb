@@ -1,34 +1,8 @@
 </br></br>
 <h2>いいね一覧</h2>
 </br></br>
-<div class="card-container">
- <% @like_posts.each do |post| %>
-  <div class="card mx-1 my-1">
-   <div class ="card-width">
-    <%= link_to post_path(post.id) do %>
-     <%= image_tag post.get_post_image, size:'250x250', class: "card-img-top"; %>
-    <% end %>
-   </div>  
-   <div class="card-body card-width">
-    <div class="row">
-     <div class="col-4">
-      <%= image_tag post.user.get_profile_image,style: "width: 60px; height: 60px; border-radius: 50%" %>
-     </div>
-     <div class="col-8">
-      <p class="card-title">
-       <%= post.title%>
-      </p>
-      <div id="like_post_<%= post.id %>">
-        <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
-      </div>
-      
-      <%= link_to "#{post.comments.count} コメント", post_path(post.id), class: "text-dark" %>
-      
-     </div>
-    </div>
-   </div>  
-  </div>
-  <% end %>
+<div class="card-container" id="like_posts">
+  <%= render "public/posts/like_posts", like_posts: @like_posts %>
 </div>
 
 
