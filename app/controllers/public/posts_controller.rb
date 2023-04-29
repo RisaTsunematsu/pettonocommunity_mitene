@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
         @posts += Tag.find_by(name: key).posts if value == "1"
       end
       @posts.uniq!
-      @posts = Post.where(id: @posts).page(params[:page])
+      @posts = Post.where(id: @posts).page(params[:page]).order(created_at: :desc)
     end
   end
 
@@ -58,7 +58,7 @@ class Public::PostsController < ApplicationController
   
   def search
     if params[:keyword].present?
-      @posts = Post.where('tag LIKE ?',"%#{params[:keyword]}%")
+      @posts = Post.where('tag LIKE ?',"%#{params[:keyword]}%").order(created_at: :desc)
       @keyword = params[:keyword]
     else
       @posts = Post.all
