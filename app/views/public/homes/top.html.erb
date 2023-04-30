@@ -2,8 +2,20 @@
 <h2>ようこそみんなのペットコミュニティMiteneへ!</h2></br>
 </br></br>
 
- 
+ <h3>新着投稿</h3></br>
  <%= render 'public/posts/index', posts: @posts%>
+ 
+ <% if user_signed_in? %>
+  <%= link_to "新着投稿をもっと見る",posts_path %>
+ <% else %>
+  <%= link_to "新着記事をもっと見る", new_user_session_path %>
+ <% end %>
+ 
+ </br></br></br>
+ <h3>人気のコミュニティ</h3></br>
+  
+  
+  
   <%= paginate @posts %>
   
   
