@@ -72,8 +72,8 @@ class Public::PostsController < ApplicationController
   end
   
   def like_posts
-    user = User.find(params[:user_id])
-    post_ids = user.likes.pluck(:post_id)
+    @user = User.find(params[:user_id])
+    post_ids = @user.likes.pluck(:post_id)
     # post_ids = Like.where(user_id: params[:user_id]).pluck(:post_id) #全部のいいねからuser_idカラムの値がparams[:user_id]のlikeをwhereで絞り込む
     @like_posts = Post.where(id: post_ids).page(params[:page]).per(9).order(created_at: :desc)
   end

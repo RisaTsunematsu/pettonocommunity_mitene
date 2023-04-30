@@ -3,15 +3,19 @@ class Public::LikesController < ApplicationController
  
  def create
     @post = Post.find(params[:post_id])
-    current_user.likes.find_or_create_by(post_id: @post.id)
+    current_user.likes.create!(post_id: @post.id)
  end
 
   def destroy
     @post = Post.find(params[:post_id])
     like = current_user.likes.find_by(post_id: @post.id)
     like.destroy if like
-    user = current_user
-    post_ids = user.likes.pluck(:post_id)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      post_ids = @user.likes.pluck(:post_id)
+     else
+       post_ids = current_user.likes.pluck(:post_id)
+     end
     # post_ids = Like.where(user_id: params[:user_id]).pluck(:post_id) #全部のいいねからuser_idカラムの値がparams[:user_id]のlikeをwhereで絞り込む
     # いいねを外した時のいいね一覧を定義している
     @like_posts = Post.where(id: post_ids).page(params[:page]).per(9).order(created_at: :desc)
