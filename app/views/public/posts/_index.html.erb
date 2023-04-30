@@ -37,5 +37,7 @@
 
   
   
+  <% if request.fullpath != '/'%>
+    <%= paginate posts %>
+  <% end %>
   
-  <%= paginate posts %>

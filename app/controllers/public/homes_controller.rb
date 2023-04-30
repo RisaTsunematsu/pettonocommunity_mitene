@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
 
 def top
- @posts = Post.page(params[:page]).per(30).order(created_at: :desc)
+ @posts = Post.order(created_at: :desc).limit(9)
  @user = current_user
 end
 
