@@ -18,9 +18,15 @@
           <p class="card-title">
             <%= post.title%>
           </p>
-          <div id="like_post_<%= post.id %>">
-                 <div class="like_btn"><%= render "public/likes/btn", post: post, user: current_user %></div>
-          </div>
+          <% if user_signed_in? %>
+             <div id="like_post_<%= post.id %>">
+              <div class="like_btn"><%= render "public/likes/btn", post: post, user: current_user %></div>
+             </div>
+          <% else %>
+             <div id="like_post_<%= post.id %>">
+              <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+             </div>
+          <% end %>
           <%= link_to "#{post.comments.count} コメント", post_path(post.id), class: "text-dark" %>
         </div>
       </div>
