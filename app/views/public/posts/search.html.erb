@@ -21,7 +21,7 @@
           </p>
     
           <div id="like_post_<%= post.id %>">
-            <div class="like_btn"><%= render "public/likes/btn", post: post %></div>
+            <div class="like_btn"><%= render "public/likes/btn", post: post, user: current_user %></div>
           </div>
         
           <%= link_to "#{post.comments.count} コメント", post_path(post.id), class: "text-dark" %>
