@@ -44,6 +44,7 @@ class Public::PostsController < ApplicationController
 
   def edit
    @post = Post.find(params[:id])
+   #ログインユーザー以外が直接urlを打ったら投稿一覧へ飛ぶ
    if @post.user == current_user
     render "edit"
    else
