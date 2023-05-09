@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   end
   
   def edit
+  
    is_matching_login_user
    @handlename = current_user.handlename
    @user = User.find(params[:id])
@@ -59,6 +60,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:handlename, :introduction, :profile_image,:is_deleted)
   end
   
+ #ログインユーザー以外が直接urlを打ったら投稿一覧へ飛ぶ
  def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
