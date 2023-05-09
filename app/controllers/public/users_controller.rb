@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   end
   
   def edit
+   is_matching_login_user
    @handlename = current_user.handlename
    @user = User.find(params[:id])
     #ゲストユーザーはマイページ編集をできなくした
@@ -24,6 +25,7 @@ class Public::UsersController < ApplicationController
  
   
   def update
+    is_matching_login_user
     @user = User.find(params[:id])
     @handlename = current_user.handlename
     if @user.update(user_params)
@@ -57,5 +59,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:handlename, :introduction, :profile_image,:is_deleted)
   end
   
+ def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to posts_path
+    end
+ end
 
 end
