@@ -46,3 +46,8 @@
 
 ## 使用素材
 - 使用検討中です
+
+## adminログイン
+- http://35.75.48.126/admin
+- Email moca04@gmail.com
+- Password 000000
